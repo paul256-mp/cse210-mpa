@@ -32,7 +32,7 @@ public class Job
 {    static void Main(string[] args)
     {
         Job job1 = new Job();
-        job1._jobtitle = "Software engineerer";
+        job1._jobtitle = "foreman";
         job1._company = "teyseer";
         job1._yearstarted = 2019;
         job1._yearended = 2020;
