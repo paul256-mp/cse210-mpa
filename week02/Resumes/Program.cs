@@ -29,7 +29,8 @@ namespace Resumes
     }
 }
 public class Job
-{    static void Main(string[] args)
+{
+    static void Main(string[] args)
     {
         Job job1 = new Job();
         job1._jobtitle = "foreman";

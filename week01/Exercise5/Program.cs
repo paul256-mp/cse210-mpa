@@ -16,7 +16,7 @@ class Program
         {
             return number * number;
         }
-    
+
         static string promptUsername()
         {
             Console.Write("Please enter your name: ");
