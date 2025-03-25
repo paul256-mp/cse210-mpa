@@ -20,11 +20,12 @@ public class Scripture
       }
     }
 
-  public void HideRandomWords(int numberToHide)
+  public void HideRandomWords(int numberToHide=3)
   {
-      for (int i = 0; i < numberToHide; i++)
-      {
-        int index = _random.Next(_Words.Count);
+    for (int i = 0; i < numberToHide; i++)
+    {
+      int index = _random.Next(_Words.Count);
+      _Words[index].hide();
         
       }
   }
