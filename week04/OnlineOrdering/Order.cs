@@ -1,30 +1,30 @@
 
-using System;
-using System.Dynamic;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-
 public class Order
 {
-  private customer _Customer;
-  private List<string> products;
+    private readonly List<Product> _products;
+    private readonly Customer _customer;
 
-  public decimal GetTotalPrice()
-  {
-    // Example implementation: calculate total price based on products
-    decimal price = 10.0m; // Example price per product
-    return products.Count * price;
+    public Order(List<Product> products, Customer customer)
+    {
+        _products = products;
+        _customer = customer;
+    }
 
-  }
-  public string GetPackingLabel()
-  {
-      // Example implementation: return a packing label for the order
-      return $"Packing Label for Customer: {_Customer}";
-  }
+    public decimal CalculateTotalCost()
+    {
+        decimal productsTotal = _products.Sum(product => product.GetTotalCost());
+        decimal shippingCost = _customer.IsInUSA() ? 5m : 35m;
+        return productsTotal + shippingCost;
+    }
 
+    public string GeneratePackingLabel()
+    {
+        IEnumerable<string> labels = _products.Select(product => $"{product.GetName()} (ID: {product.GetProductId()})");
+        return string.Join("\n", labels);
+    }
 
-
-
-
-
+    public string GenerateShippingLabel()
+    {
+        return $"{_customer.GetName()}\n{_customer.GetAddress().GetFullAddress()}";
+    }
 }

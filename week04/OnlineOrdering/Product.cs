@@ -1,22 +1,20 @@
 
-using System;
-using System.Runtime.CompilerServices;
-public class Products
+public class Product
 {
-  private int _productId;
-  private int _price;
-  private int _quantity;
+    private readonly string _name;
+    private readonly string _productId;
+    private readonly decimal _price;
+    private readonly int _quantity;
 
-  public Products(int productId, int price, int quantity)
-  {
-      _productId = productId;
-      _price = price;
-      _quantity = quantity;
-  }
+    public Product(string name, string productId, decimal price, int quantity)
+    {
+        _name = name;
+        _productId = productId;
+        _price = price;
+        _quantity = quantity;
+    }
 
-  Products products = new Products(1, 100, 2);
-
-
-
-
+    public string GetName() => _name;
+    public string GetProductId() => _productId;
+    public decimal GetTotalCost() => _price * _quantity;
 }

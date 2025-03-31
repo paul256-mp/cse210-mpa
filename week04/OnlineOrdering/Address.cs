@@ -1,23 +1,19 @@
-using System.Collections.Concurrent;
-
 public class Address
 {
-  public string Street;
-  public string City;
-  public string State;
-  public string ZipCode;
+    private readonly string _street;
+    private readonly string _city;
+    private readonly string _state;
+    private readonly string _country;
 
-  private string country;
-
-  public bool IsInUSA()
-  {
-
+    public Address(string street, string city, string state, string country)
     {
-      return country.ToLower() == "usa";
+        _street = street;
+        _city = city;
+        _state = state;
+        _country = country;
     }
-  }
-  public string GetFullAddress()
-  {
-      return $"{Street}, {City}, {State}, {ZipCode}, {country}";
-  }
+
+    public bool IsInUSA() => _country.Equals("USA", StringComparison.OrdinalIgnoreCase);
+
+    public string GetFullAddress() => $"{_street}\n{_city}, {_state}\n{_country}";
 }
